@@ -1,5 +1,5 @@
-import sys
 from enum import StrEnum
+import sys
 
 
 class InputKey(StrEnum):
