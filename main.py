@@ -1,5 +1,5 @@
-from enum import StrEnum
 import sys
+from enum import StrEnum
 
 
 class InputKey(StrEnum):
@@ -131,6 +131,69 @@ grafite_keymap = {
     InputKey.comma: "<",
     InputKey.underscore: ">",
     InputKey.colon: "?",
+}
+
+hyper_keymap = {
+    InputKey.p: "q",
+    InputKey.c: "w",
+    InputKey.l: "e",
+    InputKey.m: "r",
+    InputKey.v: "t",
+    InputKey.x: "y",
+    InputKey.u: "u",
+    InputKey.o: "i",
+    InputKey.y: "o",
+    InputKey.f: "p",
+    InputKey.n: "a",
+    InputKey.s: "s",
+    InputKey.r: "d",
+    InputKey.t: "f",
+    InputKey.d: "g",
+    InputKey.dot: "h",
+    InputKey.a: "j",
+    InputKey.e: "k",
+    InputKey.i: "l",
+    InputKey.h: ";",
+    InputKey.b: "z",
+    InputKey.g: "x",
+    InputKey.quote: "c",
+    InputKey.w: "v",
+    InputKey.z: "b",
+    InputKey.slash: "n",
+    InputKey.comma: "m",
+    InputKey.q: ",",
+    InputKey.j: ".",
+    InputKey.k: "/",
+    InputKey.P: "Q",
+    InputKey.C: "W",
+    InputKey.L: "E",
+    InputKey.M: "R",
+    InputKey.V: "T",
+    InputKey.X: "~",
+    InputKey.U: "U",
+    InputKey.O: "I",
+    InputKey.Y: "O",
+    InputKey.F: "P",
+    InputKey.N: "A",
+    InputKey.S: "S",
+    InputKey.R: "D",
+    InputKey.T: "F",
+    InputKey.D: "G",
+    InputKey.angle_bracket_right: "H",
+    InputKey.A: "J",
+    InputKey.E: "K",
+    InputKey.I: "L",
+    InputKey.H: ";",
+    InputKey.B: "Z",
+    InputKey.G: "X",
+    InputKey.double_quote: "C",
+    InputKey.W: "V",
+    InputKey.Z: "B",
+    InputKey.question_mark: "N",
+    InputKey.angle_bracket_left: "M",
+    InputKey.Q: "<",
+    InputKey.J: ">",
+    InputKey.K: "?",
 }
 
 colemak_dh_keymap = {
@@ -282,16 +345,18 @@ def get_keymap() -> dict[InputKey, str]:
 
     keymap = args[1]
 
-    if keymap == "qwerty":
-        keymap = qwerty_keymap
-    elif keymap == "grafite":
-        keymap = grafite_keymap
-    elif keymap == "dh":
-        keymap = colemak_dh_keymap
-    else:
-        print("Invalid keymap")
-        exit(1)
-    return keymap
+    match keymap:
+        case "qwerty":
+            return qwerty_keymap
+        case "grafite":
+            return grafite_keymap
+        case "dh":
+            return colemak_dh_keymap
+        case "hyper":
+            return hyper_keymap
+        case _:
+            print("Invalid keymap")
+            exit(1)
 
 
 if __name__ == "__main__":
